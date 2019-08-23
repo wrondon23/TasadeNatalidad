@@ -1,8 +1,8 @@
 ---
 title: "TasaNatalidad"
 output:
-  word_document: default
   html_document: default
+  word_document: default
 ---
 
 ```{r echo=FALSE}
@@ -44,15 +44,45 @@ kable(head(birthwtModificada), caption = "Table de variable Actualizada")
 
 ```
 
-#### Tabla de frecuencias relativas marginales de los pares (raza de la madre, peso inferior a 2.5 kg o no)
+
+#### **Tabla de frecuencias relativas marginales de los pares (raza de la madre, peso inferior a 2.5 kg o no)**
 ```{r echo=FALSE}
 
 
   ## frencuencia Relativa Global  
 TablaPesoRaza <- table("Raza" = birthwtModificada$race, "Peso" =birthwtModificada$low)  
 
- prop.table(table(birthwtModificada))  
+ 
 
+  kable(round(prop.table(TablaPesoRaza, margin = 2), 2), format = "markdown")
+
+  plot(TablaPesoRaza, col = c("honeydew","lightgoldenrod"))
+  
+  barplot(round(prop.table(TablaPesoRaza, margin = 2), 2), main = "Tabla Raza por Peso", legend.text = TRUE, beside = TRUE, 
+       col = c("honeydew","black","lightgoldenrod"), ylim = c(0, 0.8)) 
+
+```
+
+
+
+#### Tabla de frencuencia relativa marginales de los pares (fumar por peso)
+
+```{r echo=FALSE}
+
+tablaFumarPezo <- table("Fumar"= birthwtModificada$smoke, "Peso" = birthwtModificada$low )
+
+kable(round(prop.table(tablaFumarPezo, margin = 2),2))
+
+plot(tablaFumarPezo, col = c("lightsalmon4","lightsalmon3"))
+
+barplot(round(prop.table(tablaFumarPezo, margin = 2),2),
+        main = "Tabla fumar comparada con peso de niño",
+        ylim = c(0, 0.8),
+        beside = TRUE,
+        legend.text = TRUE,
+        col = c("lightsalmon4","lightsalmon3")
+        
+        )
 
 
 ```
