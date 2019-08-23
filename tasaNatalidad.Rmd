@@ -1,0 +1,51 @@
+---
+title: "TasaNatalidad"
+author: "wilfrido Rondon"
+date: "8/22/2019"
+output: html_document
+---
+
+```{r echo=FALSE}
+library(MASS)
+library(knitr)
+```
+
+#### **Introduccion**
+
+What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+```{r}
+kable(head(birthwt), caption = "Tabla genral de variables")
+```
+
+```{r echo=FALSE}
+##cambiar valores a las variables de peso, raza, y fumar 
+
+##hacer una compia del data set
+birthwtModificada <- birthwt
+
+#cambiando la variable low
+birthwtModificada$low[birthwtModificada$low==0] <-"NO"
+birthwtModificada$low[birthwtModificada$low==1] <-"Si"
+
+#Camibando la variable fumar
+
+birthwtModificada$smoke[birthwtModificada$smoke == 0] <- "NO"
+birthwtModificada$smoke[birthwtModificada$smoke == 1] <- "SI"
+
+##Cambiando los valores de la variable raza
+
+birthwtModificada$race[birthwtModificada$race== 1] <- "Blanco"
+birthwtModificada$race[birthwtModificada$race== 2] <- "Negro"
+birthwtModificada$race[birthwtModificada$race== 3] <- "Otros"
+
+kable(head(birthwtModificada), caption = "Table de variable Actualizada")
+
+```
+
+
+```{r}
+
+```
+
