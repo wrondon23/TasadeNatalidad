@@ -1,8 +1,8 @@
 ---
 title: "TasaNatalidad"
-author: "wilfrido Rondon"
-date: "8/22/2019"
-output: html_document
+output:
+  word_document: default
+  html_document: default
 ---
 
 ```{r echo=FALSE}
@@ -44,8 +44,16 @@ kable(head(birthwtModificada), caption = "Table de variable Actualizada")
 
 ```
 
+#### Tabla de frecuencias relativas marginales de los pares (raza de la madre, peso inferior a 2.5 kg o no)
+```{r echo=FALSE}
 
-```{r}
+
+  ## frencuencia Relativa Global  
+TablaPesoRaza <- table("Raza" = birthwtModificada$race, "Peso" =birthwtModificada$low)  
+
+ prop.table(table(birthwtModificada))  
+
+
 
 ```
 
