@@ -8,6 +8,7 @@ output:
 ```{r echo=FALSE}
 library(MASS)
 library(knitr)
+
 ```
 
 #### **Introduccion**
@@ -54,7 +55,7 @@ TablaPesoRaza <- table("Raza" = birthwtModificada$race, "Peso" =birthwtModificad
 
  
 
-  kable(round(prop.table(TablaPesoRaza, margin = 2), 2), format = "markdown")
+  kable(round(prop.table(TablaPesoRaza, margin = 2), 2),)
 
   plot(TablaPesoRaza, col = c("honeydew","lightgoldenrod"))
   
@@ -73,6 +74,7 @@ tablaFumarPezo <- table("Fumar"= birthwtModificada$smoke, "Peso" = birthwtModifi
 
 kable(round(prop.table(tablaFumarPezo, margin = 2),2))
 
+
 plot(tablaFumarPezo, col = c("lightsalmon4","lightsalmon3"))
 
 barplot(round(prop.table(tablaFumarPezo, margin = 2),2),
@@ -84,6 +86,17 @@ barplot(round(prop.table(tablaFumarPezo, margin = 2),2),
         
         )
 
+
+```
+```{r}
+
+tablaMutiVariable <- table(birthwtModificada$low, birthwtModificada$smoke, birthwtModificada$race)
+prop.table(tablaMutiVariable)
+
+
+ kable(round(prop.table(tablaMutiVariable, margin = 1),2),"html")
+
+round(prop.table(tablaMutiVariable, margin = 2),2)
 
 ```
 
