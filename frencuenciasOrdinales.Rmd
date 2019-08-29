@@ -1,0 +1,84 @@
+---
+title: "FrecuenciaOrdinales"
+output: html_document
+
+---
+
+```{r}
+library(MASS)
+library(knitr)
+library(kableExtra)
+```
+
+```{r echo=FALSE}
+
+
+
+longitud = rep(c("Muy.corto","Corto","Largo","Normal","Muy.largo"), c(20,22,15,30,13))
+
+longitud <- factor(longitud,
+                          ordered = TRUE, 
+                          levels = c("Muy.corto","Corto","Normal","Largo","Muy.largo"))
+
+```
+
+
+
+---
+```{r echo=FALSE}
+ kable(table(longitud),caption = "Tabla frecuencia Absoluta")%>%
+  kable_styling(bootstrap_options = c("striped" ,full_width = F))
+
+```
+```{r echo=FALSE}
+barplot( table(longitud), main = "Grafico de las frencucias absolutas")
+```
+
+```{r echo=FALSE}
+kable(cumsum(table(longitud)))%>%
+  kable_styling()
+
+```
+
+```{r echo=FALSE}
+barplot(cumsum(table(longitud)), main = "Grafico de las frecuencias absolutas acumuladas")
+```
+
+
+```{r echo=FALSE}
+kable(round(prop.table(table(longitud)),2))%>%
+  kable_styling()
+```
+
+```{r echo=FALSE}
+barplot(round(prop.table(table(longitud)),2), main = "Grafico frecuencias relativa Absolutas")
+```
+
+
+
+```{r echo=FALSE}
+kable(round(cumsum(prop.table(table(longitud))),2))%>%
+  kable_styling()
+```
+```{r echo=FALSE}
+barplot (cumsum((prop.table(table(longitud)))))
+```
+###-----------------------------------------------------------------------------------------
+
+##Analisis longitud cuello girafa
+
+```{r}
+zonas = rep(c("Africa","Bilbao","Colombia","Dinamarca"), c(30,25,35,10))
+jirafas = data.frame(zonas,longitud)
+
+
+```
+
+
+```{r}
+table(jirafas)
+
+kable(apply(table(jirafas), MARGIN = 2, FUN = cumsum))%>%
+  kable_styling()
+```
+
